@@ -1,0 +1,4 @@
+theme: jekyll-theme-primer
+title: MecaU
+description: MecaU is a security program designed to scan files for malware. It uses a database of known virus hashes and will compare the hash of each file on the system against the database to determine if it is infected. If an infected file is detected, the user has the choice to remove the malware or not.
+google_analytics: G-J2H6BBV34K
