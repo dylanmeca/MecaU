@@ -2,10 +2,13 @@ import os
 import hashlib
 import requests
 import argparse
+from colorama import init, Fore, Style
+
+init(autoreset=True)
 
 def is_infected(file):
     # Calculate the hash of the file
-    print("[*] Scanning file....")
+    print(Style.BRIGHT + Fore.GREEN + "[*] Scanning file....")
     hasher = hashlib.md5()
     with open(file, 'rb') as f:
         buf = f.read()
@@ -13,7 +16,7 @@ def is_infected(file):
     file_hash = hasher.hexdigest()
 
     # Check if the hash matches that of the known virus
-    print("[*] The hash of the file is: ", file_hash)
+    print(Style.BRIGHT + Fore.GREEN + "[*] The hash of the file is: ", file_hash)
     response = requests.get('https://dylanmeca.github.io/MecaU/hashdb.txt')
     hash_db = response.text.splitlines()
     if file_hash in hash_db:
@@ -27,15 +30,15 @@ def scan_directory(directory):
             file_path = os.path.join(root, file)
             if is_infected(file_path):
                 # Delete the infected file
-                print("[*] ¡Alert! Malware detected")
-                user = input("[*] Do you want to remove the malware? (y/n) ")
+                print(Style.BRIGHT + Fore.RED + "[*] ¡Alert! Malware detected")
+                user = input(Style.BRIGHT + Fore.GREEN + "[*] Do you want to remove the malware? (y/n) ")
                 if user == "y":
-                    print("[*] Removing malware...")
+                    print(Style.BRIGHT + Fore.GREEN + "[*] Removing malware...")
                     #os.system(f"scrub -p dod {file_path} && shred -zun 10 -v {file_path}")
                     os.remove(file_path)
-                    print(f'[*] Removed {file_path}')
+                    print(Style.BRIGHT + Fore.GREEN + f'[*] Removed {file_path}')
             else:
-                print("[*] No malware found")
+                print(Style.BRIGHT + Fore.GREEN + "[*] No malware found")
 
 # Add a command line argument to specify the directory to scan
 parser = argparse.ArgumentParser(description='Scan a directory for malware')
