@@ -10,4 +10,4 @@ on the system against the database to determine if it is infected. If an infecte
 The program uses the OS Python library to walk through the files on the system and the hashlib library to calculate the hash of each file. 
 The requests library is used to download the hash database from a local server. MecaU is an effective tool to keep the system safe and protected against malware.
 
-More information in the [Mecau Repository](https://github.com/dylanmeca/MecaU)
+More information in the [Mecau Repository](https://github.com/dylanmeca/MecaU).
