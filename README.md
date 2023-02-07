@@ -16,3 +16,14 @@ To install and use MecaU, follow these steps:
 3. Download the file: <a href="https://raw.githubusercontent.com/dylanmeca/MecaU/main/mecau.py" download="mecau.py">mecau.py</a>
 4. Open a terminal and access the directory where the file is [mecau.py](https://raw.githubusercontent.com/dylanmeca/MecaU/main/mecau.py).
 5. Run the following command to start a scan: ```python3 mecau.py -d /directory ```
+
+```txt
+usage: mecau.py [-h] -d DIRECTORY
+
+Scan a directory for malware
+
+options:
+  -h, --help            show this help message and exit
+  -d DIRECTORY, --directory DIRECTORY
+                        Directory to scan
+```
