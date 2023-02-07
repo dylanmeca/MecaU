@@ -11,8 +11,8 @@ MecaU is a security program designed to scan files for malware. It uses a databa
 
 To install and use MecaU, follow these steps:
 
-1. Asegúrate de tener instalado [Python](https://www.python.org/) en tu sistema.
-2. Ejecuta el siguiente comando para instalar las dependencias necesarias: ```pip3 install requests argparse colorama```
-3. Descarga el archivo: <a href="https://raw.githubusercontent.com/dylanmeca/MecaU/main/mecau.py" download="mecau.py">mecau.py</a>
-4. Abre una terminal y accede al directorio donde esta el archivo [mecau.py](https://raw.githubusercontent.com/dylanmeca/MecaU/main/mecau.py).
-5. Ejecuta el siguiente comando para iniciar un escaneo: ```python3 mecau.py -d /directory ```
+1. Make sure you have [Python](https://www.python.org/) installed on your system.
+2. Run the following command to install the necessary dependencies: ```pip3 install requests argparse colorama```
+3. Download the file: <a href="https://raw.githubusercontent.com/dylanmeca/MecaU/main/mecau.py" download="mecau.py">mecau.py</a>
+4. Open a terminal and access the directory where the file is [mecau.py](https://raw.githubusercontent.com/dylanmeca/MecaU/main/mecau.py).
+5. Run the following command to start a scan: ```python3 mecau.py -d /directory ```
