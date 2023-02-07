@@ -16,7 +16,7 @@ def is_infected(file):
     file_hash = hasher.hexdigest()
 
     # Check if the hash matches that of the known virus
-    print(Style.BRIGHT + Fore.GREEN + "[*] The hash of the file is: ", file_hash)
+    print(Style.BRIGHT + Fore.GREEN + "[*] The hash of the file is:", file_hash)
     response = requests.get('https://dylanmeca.github.io/MecaU/hashdb.txt')
     hash_db = response.text.splitlines()
     if file_hash in hash_db:
