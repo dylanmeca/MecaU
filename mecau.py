@@ -4,16 +4,16 @@ import requests
 import argparse
 
 def is_infected(file):
-    # Calcula el hash del archivo
-    print("[*] Escaneando archivo....")
+    # Calculate the hash of the file
+    print("[*] Scanning file....")
     hasher = hashlib.md5()
     with open(file, 'rb') as f:
         buf = f.read()
         hasher.update(buf)
     file_hash = hasher.hexdigest()
 
-    # Verifica si el hash coincide con el del virus conocido
-    print("[*] El hash del archivo es: ", file_hash)
+    # Check if the hash matches that of the known virus
+    print("[*] The hash of the file is: ", file_hash)
     response = requests.get('https://dylanmeca.github.io/MecaU/hashdb.txt')
     hash_db = response.text.splitlines()
     if file_hash in hash_db:
@@ -26,20 +26,21 @@ def scan_directory(directory):
         for file in files:
             file_path = os.path.join(root, file)
             if is_infected(file_path):
-                # Elimina el archivo infectado
-                print("[*] ¡Alerta! Se detecto malware")
-                user = input("[*] Deseas eliminar el malware? (y/n) ")
+                # Delete the infected file
+                print("[*] ¡Alert! Malware detected")
+                user = input("[*] Do you want to remove the malware? (y/n) ")
                 if user == "y":
-                    print("[*] Eliminando malware...")
-                    os.system(f"scrub -p dod {file_path} && shred -zun 10 -v {file_path}")
-                    print(f'[*] Eliminado {file_path}')
+                    print("[*] Removing malware...")
+                    #os.system(f"scrub -p dod {file_path} && shred -zun 10 -v {file_path}")
+                    os.remove(file_path)
+                    print(f'[*] Removed {file_path}')
             else:
-                print("[*] No se encontro malware")
+                print("[*] No malware found")
 
-# Añade un argumento de línea de comandos para especificar el directorio a escanear
-parser = argparse.ArgumentParser(description='Escanear un directorio para detectar malware')
-parser.add_argument('-d', '--directory', required=True, help='Directorio a escanear')
+# Add a command line argument to specify the directory to scan
+parser = argparse.ArgumentParser(description='Scan a directory for malware')
+parser.add_argument('-d', '--directory', required=True, help='Directory to scan')
 args = parser.parse_args()
 
-# Ejecuta el escaneo en el directorio especificado
+# Run the scan in the specified directory
 scan_directory(args.directory)
