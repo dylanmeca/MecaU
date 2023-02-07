@@ -14,7 +14,7 @@ def is_infected(file):
 
     # Verifica si el hash coincide con el del virus conocido
     print("[*] El hash del archivo es: ", file_hash)
-    response = requests.get('http://127.0.0.1/hashdb.txt')
+    response = requests.get('https://dylanmeca.github.io/MecaU/hashdb.txt')
     hash_db = response.text.splitlines()
     if file_hash in hash_db:
         return True
