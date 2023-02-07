@@ -27,3 +27,20 @@ options:
   -d DIRECTORY, --directory DIRECTORY
                         Directory to scan
 ```
+
+## 👷 Contributions
+This project is open source and we are open to any kind of contribution. If you want to collaborate with the project, follow these steps:
+
+- Fork this repository.
+- Create a branch with your contribution.
+- Make a pull request to this repository. 
+
+Be sure to include a detailed description of your contribution and to follow our code standards.
+
+## 📜 License
+This project is released under the [GPL-3.0](https://github.com/dylanmeca/MecaU/blob/main/LICENSE) license. This means that the code and documentation in this project are free to use, modify, and distribute as long as you respect the license terms.
+
+For more information about the license, see the [LICENSE](https://github.com/dylanmeca/MecaU/blob/main/LICENSE) file included in this repository.
+
+## 🧾 Credits
+This project has been developed by [Dylan Meca](https://github.com/dylanmeca) and contributions from [users](https://github.com/dylanmeca/MecaU/contributors).
