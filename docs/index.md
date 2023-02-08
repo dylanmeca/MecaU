@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/github/license/dylanmeca/MecaU.svg)](https://github.com/dylanmeca/MecaU/blob/main/LICENSE)
 [![dylanmeca](https://img.shields.io/badge/author-dylanmeca-green.svg)](https://github.com/dylanmeca)
 [![Python](https://img.shields.io/badge/language-Python%20-yellow.svg)](https://www.python.org)
-![mecau](https://github.com/dylanmeca/MecaU/raw/main/logo.png)
+![mecau](https://github.com/dylanmeca/MecaU/raw/main/presentation.png)
 
 MecaU is a security program designed to scan files for malware. It uses a database of known virus hashes and will compare the hash of each file 
 on the system against the database to determine if it is infected. If an infected file is detected, the user has the choice to remove the malware or not. 
