@@ -30,6 +30,7 @@ def scan_directory(directory):
             file_path = os.path.join(root, file)
             if is_infected(file_path):
                 # Delete the infected file
+                print(Style.BRIGHT + Fore.RED + f"[*] File: {file_path}")
                 print(Style.BRIGHT + Fore.RED + "[*] ¡Alert! Malware detected")
                 user = input(Style.BRIGHT + Fore.GREEN + "[*] Do you want to remove the malware? (y/n) ")
                 if user == "y":
@@ -38,6 +39,7 @@ def scan_directory(directory):
                     os.remove(file_path)
                     print(Style.BRIGHT + Fore.GREEN + f'[*] Removed {file_path}')
             else:
+                print(Style.BRIGHT + Fore.GREEN + f"[*] File: {file_path}")
                 print(Style.BRIGHT + Fore.GREEN + "[*] No malware found")
 
 # Add a command line argument to specify the directory to scan
