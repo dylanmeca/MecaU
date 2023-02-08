@@ -17,8 +17,12 @@ def is_infected(file):
 
     # Check if the hash matches that of the known virus
     print(Style.BRIGHT + Fore.GREEN + "[*] The hash of the file is:", file_hash)
-    response = requests.get('https://dylanmeca.github.io/MecaU/hashdb.txt')
-    hash_db = response.text.splitlines()
+    try:
+        response = requests.get('https://dylanmeca.github.io/MecaU/hashdb.txt')
+        hash_db = response.text.splitlines()
+    except:
+        print(Style.BRIGHT + Fore.RED + "[*] Could not connect to the server")
+        
     if file_hash in hash_db:
         return True
     else:
