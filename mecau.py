@@ -1,4 +1,5 @@
 import os
+import sys
 import hashlib
 import requests
 import argparse
@@ -22,6 +23,7 @@ def is_infected(file):
         hash_db = response.text.splitlines()
     except:
         print(Style.BRIGHT + Fore.RED + "[*] Could not connect to the server")
+        sys.exit()
         
     if file_hash in hash_db:
         return True
