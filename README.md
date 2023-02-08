@@ -28,6 +28,12 @@ options:
                         Directory to scan
 ```
 
+📦 It is also possible to install MecaU from an executable file: 
+* 🐧 [Linux](https://github.com/dylanmeca/MecaU/releases/download/1.0/mecau)
+    * ✅ Only tested on Ubuntu 22.04
+* 🪟 [Windows](https://github.com/dylanmeca/MecaU/releases/download/1.0/mecau.exe)
+    * ✅ Only tested on Windows 11
+
 ## 🚨 Report Malware ☣
 
 If when analyzing a program in [Tria.ge](https://tria.ge/), [VirusTotal](https://www.virustotal.com/) or you think a program is malware, you can report it in this repository in [the Issues Section](https://github.com/dylanmeca/MecaU/issues), to add the hash of said malware to our database and thus help our scanner detect more programs that are malware.
