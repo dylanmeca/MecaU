@@ -30,10 +30,12 @@ jobs:
       run: |
         pyinstaller mecau.py
 
-    - name: Create PFX
+    - name: Create self-signed certificate
       run: |
-        MakeCert -r -pe -n "CN=MecaUSecurity" -b 01/01/2000 -e 01/01/2030 -eku 1.3.6.1.5.5.7.3.3 -ss my -sr localMachine -sky signature -sp "Microsoft RSA SChannel Cryptographic Provider" -sy 12 certified-mecau.pfx
+        openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out certified.pem -keyout certified.key
+        openssl pkcs12 -export -out certified.pfx -inkey certified.key -in certified.pem -password pass:${{ env.PFX_PASSWORD }}
 
+   
     - name: Sign Executable
       run: |
         signtool sign /f certified-mecau.pfx /p ${{ env.PFX_PASSWORD }} dist\mecau.exe
