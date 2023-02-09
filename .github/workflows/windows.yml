@@ -1,4 +1,4 @@
-name: Sign Executable
+name: Convert .py to .exe
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
 
 env:
   PYTHON_VERSION: 3.9
-  PFX_PASSWORD: ${{ secrets.PFX_PASSWORD }}
 
 jobs:
   sign-executable:
@@ -29,13 +28,3 @@ jobs:
     - name: Compile with PyInstaller
       run: |
         pyinstaller mecau.py
-
-    - name: Create self-signed certificate
-      run: |
-        openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out certified.pem -keyout certified.key
-        openssl pkcs12 -export -out certified.pfx -inkey certified.key -in certified.pem -password pass:${{ env.PFX_PASSWORD }}
-
-   
-    - name: Sign Executable
-      run: |
-        signtool sign /f certified.pfx /p ${{ env.PFX_PASSWORD }} dist\mecau.exe
