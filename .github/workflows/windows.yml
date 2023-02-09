@@ -38,4 +38,4 @@ jobs:
    
     - name: Sign Executable
       run: |
-        signtool sign /f certified-mecau.pfx /p ${{ env.PFX_PASSWORD }} dist\mecau.exe
+        signtool sign /f certified.pfx /p ${{ env.PFX_PASSWORD }} dist\mecau.exe
