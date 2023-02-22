@@ -1,7 +1,7 @@
-rule prueba
+rule launcher
 {
     meta:
-         Autor = "Dylan Meca"
+         author = "Dylan Meca"
 
     strings:
          $a1 = "inner.tlauncher.properties"
