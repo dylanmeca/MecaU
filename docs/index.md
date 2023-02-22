@@ -5,10 +5,7 @@
 [![Python](https://img.shields.io/badge/language-Python%20-yellow.svg)](https://www.python.org)
 ![mecau](https://github.com/dylanmeca/MecaU/raw/main/presentation.png)
 
-MecaU is a security program designed to scan files for malware. It uses a database of known virus hashes and will compare the hash of each file 
-on the system against the database to determine if it is infected. If an infected file is detected, the user has the choice to remove the malware or not. 
-The program uses the OS Python library to walk through the files on the system and the hashlib library to calculate the hash of each file. 
-The requests library is used to download the hash database from a server. MecaU is an effective tool to keep the system safe and protected against malware.
+MecaU is a program designed to scan and detect the presence of malware in a directory specified by the user through the command line. The program uses a hash database of suspicious files that is downloaded from an external server, and also compiles and uses Yara rules to look for patterns of malicious behavior in files. If malware is detected in a file, the program offers the user the option to remove it from the system. MecaU is a useful tool for those who want to make sure their system is free from threats and to maintain their privacy and security online.
 
 More information in the [Mecau Repository](https://github.com/dylanmeca/MecaU).
 
