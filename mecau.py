@@ -50,6 +50,7 @@ def is_infected(file):
                 print(Style.BRIGHT + Fore.RED + f"[*] Rules: {matches} ")
                 return True
             else:
+                print(Style.BRIGHT + Fore.GREEN + "[*] The file does not seem suspicious")
                 return False
 
 def scan_directory(directory):
