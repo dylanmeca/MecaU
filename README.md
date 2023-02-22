@@ -11,6 +11,8 @@ MecaU is a security program designed to scan files for malware. It uses a databa
 
 To install and use MecaU, follow these steps:
 
+> ⚠️ It is recommended to install [Yara](https://virustotal.github.io/yara/) for it to work correctly
+
 1. Make sure you have [Python](https://www.python.org/) installed on your system.
 2. Run the following command to install the necessary dependencies: ```pip3 install requests argparse colorama yara-python```
 3. Download the file: <a href="https://raw.githubusercontent.com/dylanmeca/MecaU/main/mecau.py" download="mecau.py">mecau.py</a>
