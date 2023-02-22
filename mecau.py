@@ -3,9 +3,27 @@ import sys
 import hashlib
 import requests
 import argparse
+import yara
 from colorama import init, Fore, Style
 
 init(autoreset=True)
+
+# URL del sitio web donde está el archivo rules.yar
+url = 'https://dylanmeca.github.io/MecaU/rules.yar'
+
+# Descarga el archivo rules.yar
+try:
+    response = requests.get(url)
+    yara_rules = response.text
+except:
+    response = requests.get(url)
+    yara_rules = response.text
+
+# Compile the Yara rules
+try: 
+    rules = yara.compile(source=yara_rules)
+except:
+    rules = False
 
 def is_infected(file):
     # Calculate the hash of the file
@@ -28,7 +46,12 @@ def is_infected(file):
     if file_hash in hash_db:
         return True
     else:
-        return False
+        if rules != False: 
+            matches = rules.match(file)
+            if matches:
+                return True
+            else:
+                return False
 
 def scan_directory(directory):
     for root, dirs, files in os.walk(directory):
