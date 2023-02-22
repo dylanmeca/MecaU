@@ -8,10 +8,10 @@ from colorama import init, Fore, Style
 
 init(autoreset=True)
 
-# URL del sitio web donde está el archivo rules.yar
+# URL of the website where the rules.yar file is
 url = 'https://dylanmeca.github.io/MecaU/rules.yar'
 
-# Descarga el archivo rules.yar
+# Download the rules.yar file
 try:
     response = requests.get(url)
     yara_rules = response.text
