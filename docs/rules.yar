@@ -23,7 +23,7 @@ rule LaunchMin {
     $b4 = "SendMessageA"
     $b5 = "ShellExecuteA"
   condition:
-    all of ($a, $a2, $a3, $a4, $a5)
+    all of ($a2, $a4, $a5)
     $a or $a3
     $b or $b1 or $b2 or $b3 or $b4 or $b5
   }
