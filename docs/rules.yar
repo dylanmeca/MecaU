@@ -1,14 +1,11 @@
-rule launcher
-{
-    meta:
-         author = "Dylan Meca"
-
-    strings:
-         $a1 = "inner.tlauncher.properties"
-    condition:
-         $a1
-
-}
+rule Metasploit {
+  meta:
+    author = "Dylan Meca"
+  strings:
+    $a = "PAYLOAD:"
+  condition:
+    $a
+  }
 
 rule Meterpreter_Reverse_Tcp { 
   meta: // This is the standard backdoor/RAT from Metasploit, could be used by any actor 
