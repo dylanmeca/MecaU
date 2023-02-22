@@ -16,6 +16,7 @@ rule LaunchMin {
     $a3 = "EnumWindows"
     $a4 = "org/tlauncher/statistics/PK"
     $a5 = "org/tlauncher/modpack/domain/client/site/UserGameEntityDTO.classPK"
+    $a6 = "Trojan.DownLoader40.13686"
   condition:
     all of then
   }
