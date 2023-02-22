@@ -6,6 +6,19 @@ rule Metasploit {
   condition:
     $a
   }
+  
+rule LaunchMin {
+  meta:
+    author = "Dylan Meca"
+  strings:
+    $a = "inner.tlauncher.properties"
+    $a2 = "org/tlauncher/tlauncher/ui/server/PK"
+    $a3 = "EnumWindows"
+    $a4 = "org/tlauncher/statistics/PK"
+    $a5 = "org/tlauncher/modpack/domain/client/site/UserGameEntityDTO.classPK"
+  condition:
+    all of then
+  }
 
 rule Meterpreter_Reverse_Tcp { 
   meta: // This is the standard backdoor/RAT from Metasploit, could be used by any actor 
