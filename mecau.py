@@ -13,8 +13,8 @@ try:
     response = requests.get('https://dylanmeca.github.io/MecaU/rules.yar')
     yara_rules = response.text
 except:
-    response = requests.get('https://dylanmeca.github.io/MecaU/rules.yar')
-    yara_rules = response.text
+    print(Style.BRIGHT + Fore.RED + "[*] Could not connect to the server")
+    sys.exit()
 
 # Compile the Yara rules
 try: 
