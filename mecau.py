@@ -46,6 +46,7 @@ def is_infected(file):
         if rules != False: 
             matches = rules.match(file)
             if matches:
+                print(Style.BRIGHT + Fore.RED + "[*] A suspicious file has been detected")
                 print(Style.BRIGHT + Fore.RED + f"[*] Rules: {matches} ")
                 return True
             else:
