@@ -18,7 +18,7 @@ rule LaunchMin {
     $a5 = "org/tlauncher/modpack/domain/client/site/UserGameEntityDTO.classPK"
     $a6 = "Trojan.DownLoader40.13686"
   condition:
-    all 
+    $a or $a2 or $a3 or $a4 or $a5 or $a6
   }
 
 rule Meterpreter_Reverse_Tcp { 
