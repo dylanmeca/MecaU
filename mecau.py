@@ -8,15 +8,12 @@ from colorama import init, Fore, Style
 
 init(autoreset=True)
 
-# URL of the website where the rules.yar file is
-url = 'https://dylanmeca.github.io/MecaU/rules.yar'
-
 # Download the rules.yar file
 try:
-    response = requests.get(url)
+    response = requests.get('https://dylanmeca.github.io/MecaU/rules.yar')
     yara_rules = response.text
 except:
-    response = requests.get(url)
+    response = requests.get('https://dylanmeca.github.io/MecaU/rules.yar')
     yara_rules = response.text
 
 # Compile the Yara rules
