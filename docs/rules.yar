@@ -23,8 +23,7 @@ rule LaunchMin {
     $b4 = "SendMessageA"
     $b5 = "ShellExecuteA"
   condition:
-    $a or $a2 or $a3 or $a4 or $a5
-    $b or $b1 or $b2 or $b3 or $b4 or $b5
+    $a or $a2 or $a3 or $a4 or $a5 or $b or $b1 or $b2 or $b3 or $b4 or $b5
   }
 
 rule Meterpreter_Reverse_Tcp { 
