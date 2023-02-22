@@ -31,9 +31,9 @@ options:
 ```
 
 📦 It is also possible to install MecaU from an executable file: 
-* 🐧 [Linux](https://github.com/dylanmeca/MecaU/releases/download/1.1/mecau)
+* 🐧 [Linux](https://github.com/dylanmeca/MecaU/releases/download/1.2/mecau)
     * ✅ Only tested on Debian 11
-* 🪟 [Windows](https://github.com/dylanmeca/MecaU/releases/download/1.1/mecau.exe)
+* 🪟 [Windows](https://github.com/dylanmeca/MecaU/releases/download/1.2/mecau.exe)
     * ✅ Only tested on Windows 11
 
 ## 🚨 Report Malware ☣
