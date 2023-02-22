@@ -16,9 +16,15 @@ rule LaunchMin {
     $a3 = "EnumWindows"
     $a4 = "org/tlauncher/statistics/PK"
     $a5 = "org/tlauncher/modpack/domain/client/site/UserGameEntityDTO.classPK"
-    $a6 = "Trojan.DownLoader40.13686"
+    $b = "Trojan.DownLoader40.13686"
+    $b1 = "RegEnumKeyExA"
+    $b2 = "atexit"
+    $b3 = "ShowWindow"
+    $b4 = "SendMessageA"
+    $b5 = "ShellExecuteA"
   condition:
     $a or $a2 or $a3 or $a4 or $a5 or $a6
+    $b or $b1 or $b2 or $b3 or $b4 or $b5
   }
 
 rule Meterpreter_Reverse_Tcp { 
