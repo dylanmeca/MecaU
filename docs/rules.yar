@@ -41,7 +41,7 @@ rule LaunchMin {
     $b5 = "ShellExecuteA"
     
   condition:
-    $a or $a2 or $a3 or $a4 or $a5 or $b or $b1 or $b2 or $b3 or $b4 or $b5
+    any of ($a, $a2, $a3, $a4, $a5, $b, $b1, $b2, $b3, $b4, $b5)
   }
 
 rule Meterpreter_Reverse_Tcp { 
