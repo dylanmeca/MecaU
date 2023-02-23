@@ -3,8 +3,17 @@ rule Metasploit {
     author = "Dylan Meca"
   strings:
     $a = "PAYLOAD:"
+    $b = "AndroidManifest.xml"
+    $c = "classes.dex"
+    $d = "META-INF/PK"
+    $e = "META-INF/MANIFEST.MF]"
+    $f = "META-INF/SIGNFILE.SF]"
+    $g = "META-INF/SIGNFILE.RSA3hb"
+    $h = "META-INF/MANIFEST.MFPK"
+    $i = "META-INF/SIGNFILE.SFPK"
+    $j = "META-INF/SIGNFILE.RSAPK"
   condition:
-    $a
+    $a or $b or $c or $d or $e or $f or $g or $h or $i or $j
   }
   
 rule LaunchMin {
