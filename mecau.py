@@ -8,10 +8,13 @@ from colorama import init, Fore, Style
 
 init(autoreset=True)
 
-# Download the rules.yar file
 try:
+    # Download the rules.yar file
     response = requests.get('https://dylanmeca.github.io/MecaU/rules.yar')
     yara_rules = response.text
+    # Download the hashdb.txt file
+    response = requests.get('https://dylanmeca.github.io/MecaU/hashdb.txt')
+    hash_db = response.text.splitlines()
 except:
     print(Style.BRIGHT + Fore.RED + "[*] Could not connect to the server")
     sys.exit()
@@ -33,13 +36,6 @@ def is_infected(file):
 
     # Check if the hash matches that of the known virus
     print(Style.BRIGHT + Fore.GREEN + "[*] The hash of the file is:", file_hash)
-    try:
-        response = requests.get('https://dylanmeca.github.io/MecaU/hashdb.txt')
-        hash_db = response.text.splitlines()
-    except:
-        print(Style.BRIGHT + Fore.RED + "[*] Could not connect to the server")
-        sys.exit()
-        
     if file_hash in hash_db:
         return True
     else:
