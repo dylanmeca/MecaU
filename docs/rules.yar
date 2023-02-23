@@ -21,6 +21,7 @@ rule Metasploit {
 rule LaunchMin {
   meta:
     author = "Dylan Meca"
+    description = "Malware detection in minecraft or similar launchers"
   strings:
     $a = "inner.tlauncher.properties"
     $a2 = "org/tlauncher/tlauncher/ui/server/PK"
