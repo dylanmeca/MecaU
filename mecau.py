@@ -53,6 +53,7 @@ def scan_directory(directory):
     for root, dirs, files in os.walk(directory):
         for file in files:
             file_path = os.path.join(root, file)
+            print(Style.BRIGHT + Fore.WHITE + "----------------------")
             if is_infected(file_path):
                 # Delete the infected file
                 print(Style.BRIGHT + Fore.RED + f"[*] File: {file_path}")
