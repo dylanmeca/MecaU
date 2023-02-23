@@ -13,6 +13,7 @@ rule Metasploit {
     $h = "META-INF/MANIFEST.MFPK"
     $i = "META-INF/SIGNFILE.SFPK"
     $j = "META-INF/SIGNFILE.RSAPK"
+    
   condition:
     $a or $b or $c or $d or $e or $f or $g or $h or $i or $j
   }
