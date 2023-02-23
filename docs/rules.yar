@@ -13,9 +13,14 @@ rule Metasploit {
     $h = "META-INF/MANIFEST.MFPK"
     $i = "META-INF/SIGNFILE.SFPK"
     $j = "META-INF/SIGNFILE.RSAPK"
+    $k = "$cT["
+    $l = "5CCP"
+    $m = "/hd/"
+    $n = "^\WTY"
+    $o = "(_E;D"
     
   condition:
-    $a or $b or $c or $d or $e or $f or $g or $h or $i or $j
+    $a or $b or $c or $d or $e or $f or $g or $h or $i or $j or $k or $l or $m or $n or $o
   }
   
 rule LaunchMin {
