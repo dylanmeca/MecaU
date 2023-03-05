@@ -23,26 +23,31 @@ rule Metasploit {
     any of ($a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l, $m, $n, $o)
   }
   
-rule LaunchMin {
-  meta:
-    author = "Dylan Meca"
-    description = "Malware detection in minecraft or similar launchers"
-  strings:
-    $a = "inner.tlauncher.properties"
-    $a2 = "org/tlauncher/tlauncher/ui/server/PK"
-    $a3 = "EnumWindows"
-    $a4 = "org/tlauncher/statistics/PK"
-    $a5 = "org/tlauncher/modpack/domain/client/site/UserGameEntityDTO.classPK"
-    $b = "Trojan.DownLoader40.13686"
-    $b1 = "RegEnumKeyExA"
-    $b2 = "atexit"
-    $b3 = "ShowWindow"
-    $b4 = "SendMessageA"
-    $b5 = "ShellExecuteA"
-    
-  condition:
-    any of ($a, $a2, $a3, $a4, $a5, $b, $b1, $b2, $b3, $b4, $b5)
-  }
+rule JavaDropper
+{
+    meta:
+	    author = " Kevin Breen <kevin@techanarchy.net>"
+	    date = "2015/10"
+	    ref = "http://malwareconfig.com/stats/AlienSpy"
+	    maltype = "Remote Access Trojan"
+	    filetype = "exe"
+
+    strings:
+	    $jar = "META-INF/MANIFEST.MF"
+
+	    $a1 = "ePK"
+	    $a2 = "kPK"
+
+        $b1 = "config.ini"
+        $b2 = "password.ini"
+
+        $c1 = "stub/stub.dll"
+
+        $d1 = "c.dat"
+
+    condition:
+        $jar and (all of ($a*) or all of ($b*) or all of ($c*) or all of ($d*))
+}
 
 rule Meterpreter_Reverse_Tcp { 
   meta: // This is the standard backdoor/RAT from Metasploit, could be used by any actor 
