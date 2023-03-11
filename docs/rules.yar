@@ -1264,3 +1264,80 @@ rule autogen_peexe_ObfuscatedGreywareOverlayPackedShell32dll_7efd1055
 		//require 90% of IOC patterns and require 50% of optional strings
 		uint16(0) == 0x5A4D and filesize > 21295721 and filesize < 26028103 and 26 of ($req*) and 67 of ($opt*)
 }
+
+rule autogen_peexe_OverlayPackedShell32dll_2c4d8b48
+{
+	meta:
+		author = "FileScan.IO Engine v1.1.0-10434c5"
+		date = "2023-03-11"
+		sample = "2c4d8b48344ae221e349e525ac16eb364ffb5ab8deae80c7caa28dd5967cabdb"
+		score = 100
+		tags = "overlay,packed,shell32.dll"
+		isWeakRule = false
+
+	strings:
+
+		//IOC patterns
+		$req0 = "SOFTWARE\\IBM\\Java Development Kit"
+		$req1 = "SOFTWARE\\IBM\\Java2 Runtime Environment"
+		$req2 = "SOFTWARE\\JavaSoft\\Java Development Kit"
+		$req3 = "SOFTWARE\\JavaSoft\\Java Runtime Environment"
+		$req4 = "http://java-for-minecraft.com/"
+
+		//optional strings
+		$opt0 = "ADVAPI32.DLL"
+		$opt1 = "CreateMutexA"
+		$opt2 = "CreateProcessA"
+		$opt3 = "CreateWindowExA"
+		$opt4 = "DispatchMessageA"
+		$opt5 = "EnumWindows"
+		$opt6 = "ExitProcess"
+		$opt7 = "FindResourceExA"
+		$opt8 = "FindWindowExA"
+		$opt9 = "FormatMessageA"
+		$opt10 = "GetCommandLineA"
+		$opt11 = "GetCurrentDirectoryA"
+		$opt12 = "GetCurrentProcess"
+		$opt13 = "GetEnvironmentVariableA"
+		$opt14 = "GetExitCodeProcess"
+		$opt15 = "GetLastError"
+		$opt16 = "GetMessageA"
+		$opt17 = "GetModuleFileNameA"
+		$opt18 = "GetModuleHandleA"
+		$opt19 = "GetProcAddress"
+		$opt20 = "GetStartupInfoA"
+		$opt21 = "GetSystemMetrics"
+		$opt22 = "GetWindowLongA"
+		$opt23 = "GetWindowTextA"
+		$opt24 = "GetWindowThreadProcessId"
+		$opt25 = "GlobalMemoryStatusEx"
+		$opt26 = "IsWow64Process"
+		$opt27 = "KERNEL32.dll"
+		$opt28 = "LoadResource"
+		$opt29 = "LockResource"
+		$opt30 = "Open URL:\t%s"
+		$opt31 = "PostQuitMessage"
+		$opt32 = "RegCloseKey"
+		$opt33 = "RegEnumKeyExA"
+		$opt34 = "RegOpenKeyExA"
+		$opt35 = "RegQueryValueExA"
+		$opt36 = "SHELL32.DLL"
+		$opt37 = "SendMessageA"
+		$opt38 = "SetEnvironmentVariableA"
+		$opt39 = "SetForegroundWindow"
+		$opt40 = "SetLastError"
+		$opt41 = "SetUnhandledExceptionFilter"
+		$opt42 = "SetWindowPos"
+		$opt43 = "ShellExecuteA"
+		$opt44 = "ShowWindow"
+		$opt45 = "TranslateMessage"
+		$opt46 = "USER32.dll"
+		$opt47 = "UpdateWindow"
+		$opt48 = "WaitForSingleObject"
+		$opt49 = "_findfirst"
+		$opt50 = "msvcrt.dll"
+
+	condition:
+		//require 50% of optional strings
+		uint16(0) == 0x5A4D and filesize > 5931389 and filesize < 7249475 and all of ($req*) and 25 of ($opt*)
+}
