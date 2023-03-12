@@ -1358,3 +1358,343 @@ rule Datper {
             $push7530h = { 68 30 75 00 00 }
           condition: $a1 and $b1 and $c1 and $delphi and ($push7530h64 or $push7530h)
 }
+
+rule BLOWFISH_Constants {
+	meta:
+		author = "phoul (@phoul)"
+		description = "Look for Blowfish constants"
+		date = "2014-01"
+		version = "0.1"
+	strings:
+		$c0 = { D1310BA6 }
+		$c1 = { A60B31D1 }	
+		$c2 = { 98DFB5AC }
+		$c3 = { ACB5DF98 }
+		$c4 = { 2FFD72DB }
+		$c5 = { DB72FD2F }
+		$c6 = { D01ADFB7 }
+		$c7 = { B7DF1AD0 }
+		$c8 = { 4B7A70E9 }
+		$c9 = { E9707A4B }
+		$c10 = { F64C261C }
+		$c11 = { 1C264CF6 }
+	condition:
+		6 of them
+}
+
+rule MD5_Constants {
+	meta:
+		author = "phoul (@phoul)"
+		description = "Look for MD5 constants"
+		date = "2014-01"
+		version = "0.2"
+	strings:
+		// Init constants
+		$c0 = { 67452301 }
+		$c1 = { efcdab89 }
+		$c2 = { 98badcfe }
+		$c3 = { 10325476 }
+		$c4 = { 01234567 }
+		$c5 = { 89ABCDEF }
+		$c6 = { FEDCBA98 }
+		$c7 = { 76543210 }
+		// Round 2
+		$c8 = { F4D50d87 }
+		$c9 = { 78A46AD7 }
+	condition:
+		5 of them
+}
+
+rule MD5_API {
+	meta:
+		author = "_pusher_"
+		description = "Looks for MD5 API"
+		date = "2016-07"
+	strings:
+		$advapi32 = "advapi32.dll" wide ascii nocase
+		$cryptdll = "cryptdll.dll" wide ascii nocase
+		$MD5Init = "MD5Init" wide ascii
+		$MD5Update = "MD5Update" wide ascii
+		$MD5Final = "MD5Final" wide ascii
+	condition:
+		($advapi32 or $cryptdll) and ($MD5Init and $MD5Update and $MD5Final)
+}
+
+rule CRC32c_poly_Constant {
+	meta:
+		author = "_pusher_"
+		description = "Look for CRC32c (Castagnoli) [poly]"
+		date = "2016-08"
+	strings:
+		$c0 = { 783BF682 }
+	condition:
+		$c0
+}
+
+rule CRC32_poly_Constant {
+	meta:
+		author = "_pusher_"
+		description = "Look for CRC32 [poly]"
+		date = "2015-05"
+		version = "0.1"
+	strings:
+		$c0 = { 2083B8ED }
+	condition:
+		$c0
+}
+
+rule CRC32_table {
+	meta:
+		author = "_pusher_"
+		description = "Look for CRC32 table"
+		date = "2015-05"
+		version = "0.1"
+	strings:
+		$c0 = { 00000000 77073096 EE0E612C 990951BA 076DC419 }
+	condition:
+		$c0
+}
+
+rule CRC32_table_lookup {
+	meta:
+		author = "_pusher_"
+		description = "CRC32 table lookup"
+		date = "2015-06"
+		version = "0.1"
+	strings:
+		$c0 = { 8B 54 24 08 85 D2 7F 03 33 C0 C3 83 C8 FF 33 C9 85 D2 7E 29 56 8B 74 24 08 57 8D 9B 00 00 00 00 0F B6 3C 31 33 F8 81 E7 FF 00 00 00 C1 E8 08 33 04 BD ?? ?? ?? ?? 41 3B CA 7C E5 5F 5E F7 D0 C3 }
+	condition:
+		$c0
+}
+
+rule CRC32b_poly_Constant {
+	meta:
+		author = "_pusher_"
+		description = "Look for CRC32b [poly]"
+		date = "2016-04"
+		version = "0.1"
+	strings:
+		$c0 = { B71DC104 }
+	condition:
+		$c0
+}
+
+rule autogen_peexe_GreywareKeyloggerMshtmldllPackedShell32dll_42e449fb
+{
+	meta:
+		author = "FileScan.IO Engine v1.1.0-10434c5"
+		date = "2023-03-12"
+		sample = "42e449fbbbe98aba4c79d1434d0b11923379faba943e888e0966766379dcdf28"
+		score = 100
+		tags = "greyware,keylogger,mshtml.dll,packed,shell32.dll"
+		isWeakRule = false
+
+	strings:
+
+		//IOC patterns
+		$req0 = "CLSID\\{D27CDB6E-AE6D-11cf-96B8-444553540000}\\InprocServer32"
+		$req1 = "Created with AutoPlay Media Studio (www.indigorose.com)"
+		$req2 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders"
+		$req3 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce"
+		$req4 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\SharedDLLs"
+		$req5 = "Software\\Classes\\"
+		$req6 = "Software\\Indigo Rose\\ACData\\"
+		$req7 = "Software\\Microsoft\\Windows NT\\CurrentVersion"
+		$req8 = "Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts"
+		$req9 = "Software\\Microsoft\\Windows\\CurrentVersion"
+		$req10 = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders"
+		$req11 = "Software\\Microsoft\\Windows\\CurrentVersion\\Fonts"
+		$req12 = "Software\\Microsoft\\Windows\\CurrentVersion\\Installer"
+		$req13 = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Comdlg32"
+		$req14 = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer"
+		$req15 = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Network"
+		$req16 = "http://www.indigorose.com"
+		$req17 = "{4EB03B49-C221-5C2B-5473-38080F80190D}"
+
+		//optional strings
+		$opt0 = "Access to %1 was denied.0An incorrect file handle was associated with %1.8Could not remove %1 because it is the current director"
+		$opt1 = "Access violation - no RTTI data!"
+		$opt2 = "AccessibleObjectFromWindow"
+		$opt3 = "Advapi32.dll"
+		$opt4 = "AvailablePageFile"
+		$opt5 = "Bogus buffer control mode"
+		$opt6 = "BringWindowToTop"
+		$opt7 = "CCriticalSection"
+		$opt8 = "CInternetConnection"
+		$opt9 = "CInternetException"
+		$opt10 = "CInternetFile"
+		$opt11 = "CInternetSession"
+		$opt12 = "COMCTL32.DLL"
+		$opt13 = "CallNextHookEx"
+		$opt14 = "CallWindowProcA"
+		$opt15 = "CallWindowProcW"
+		$opt16 = "Centered In Control"
+		$opt17 = "CharToOemA"
+		$opt18 = "Close Full Screen"
+		$opt19 = "Close the active document\nClose"
+		$opt20 = "CloseClipboard"
+		$opt21 = "CloseWindow"
+		$opt22 = "Control Panel\\Desktop"
+		$opt23 = "CopyAcceleratorTableA"
+		$opt24 = "CreateAcceleratorTableA"
+		$opt25 = "CreateBitmap"
+		$opt26 = "CreateDirectoryA"
+		$opt27 = "CreateEventA"
+		$opt28 = "CreateFileA"
+		$opt29 = "CreateProcessA"
+		$opt30 = "CreateProcessWithLogonW"
+		$opt31 = "CreateStdAccessibleObject"
+		$opt32 = "CreateThread"
+		$opt33 = "CreateToolhelp32Snapshot"
+		$opt34 = "CreateWindowExA"
+		$opt35 = "DISPLAYNAME"
+		$opt36 = "DecodePointer"
+		$opt37 = "DefWindowProcA"
+		$opt38 = "DefWindowProcW"
+		$opt39 = "DeleteCriticalSection"
+		$opt40 = "DeleteFileA"
+		$opt41 = "DestroyAcceleratorTable"
+		$opt42 = "DestroyIcon"
+		$opt43 = "DestroyWindow"
+		$opt44 = "DeviceIoControl"
+		$opt45 = "DispatchMessageA"
+		$opt46 = "DisplayName"
+		$opt47 = "DllGetClassObject"
+		$opt48 = "DllGetVersion"
+		$opt49 = "DllRegisterServer"
+		$opt50 = "DllUnregisterServer"
+		$opt51 = "DosDateTimeToFileTime"
+		$opt52 = "DuplicateHandle"
+		$opt53 = "EmptyClipboard"
+		$opt54 = "EnableWindow"
+		$opt55 = "EncodePointer"
+		$opt56 = "EnterCriticalSection"
+		$opt57 = "EnumChildWindows"
+		$opt58 = "EnumDisplayDevicesA"
+		$opt59 = "EnumDisplayMonitors"
+		$opt60 = "EnumProcessModules"
+		$opt61 = "EnumProcesses"
+		$opt62 = "EnumResourceLanguagesA"
+		$opt63 = "EnumWindows"
+		$opt64 = "ExitProcess"
+		$opt65 = "ExitThread"
+		$opt66 = "ExitWindowsEx"
+		$opt67 = "Expand (%s)"
+		$opt68 = "Expand docked window"
+		$opt69 = "ExpandEnvironmentStringsA"
+		$opt70 = "FileTimeToDosDateTime"
+		$opt71 = "FileTimeToLocalFileTime"
+		$opt72 = "FileTimeToSystemTime"
+		$opt73 = "FindActCtxSectionStringA"
+		$opt74 = "FindFirstFileA"
+		$opt75 = "FindNextFileA"
+		$opt76 = "FindResourceA"
+		$opt77 = "FindResourceExA"
+		$opt78 = "FindWindowA"
+		$opt79 = "FlushFileBuffers"
+		$opt80 = "FormatMessageA"
+		$opt81 = "FreeEnvironmentStringsA"
+		$opt82 = "FreeEnvironmentStringsW"
+		$opt83 = "FreeLibrary"
+		$opt84 = "FreeResource"
+		$opt85 = "FtpCreateDirectoryA"
+		$opt86 = "FtpFindFirstFileA"
+		$opt87 = "FtpGetCurrentDirectoryA"
+		$opt88 = "FtpOpenFileA"
+		$opt89 = "FtpSetCurrentDirectoryA"
+		$opt90 = "GDIPlus.dll"
+		$opt91 = "GdiPlus.dll"
+		$opt92 = "GetActiveWindow"
+		$opt93 = "GetAsyncKeyState"
+		$opt94 = "GetCapture"
+		$opt95 = "GetClassLongA"
+		$opt96 = "GetCommandLineA"
+		$opt97 = "GetComputerNameA"
+		$opt98 = "GetConsoleCP"
+		$opt99 = "GetConsoleMode"
+		$opt100 = "GetConsoleOutputCP"
+		$opt101 = "GetCurrentDirectoryA"
+		$opt102 = "GetCurrentProcess"
+		$opt103 = "GetCurrentProcessId"
+		$opt104 = "GetCurrentThread"
+		$opt105 = "GetCurrentThreadId"
+		$opt106 = "GetCursorPos"
+		$opt107 = "GetDateFormatA"
+		$opt108 = "GetDesktopWindow"
+		$opt109 = "GetDiskFreeSpaceA"
+		$opt110 = "GetDiskFreeSpaceExA"
+		$opt111 = "GetDoubleClickTime"
+		$opt112 = "GetDriveTypeA"
+		$opt113 = "GetEnvironmentStrings"
+		$opt114 = "GetEnvironmentStringsW"
+		$opt115 = "GetEnvironmentVariableA"
+		$opt116 = "GetErrorInfo"
+		$opt117 = "GetExitCodeProcess"
+		$opt118 = "GetExitCodeThread"
+		$opt119 = "GetFileAttributesA"
+		$opt120 = "GetFileAttributesExA"
+		$opt121 = "GetFileSize"
+		$opt122 = "GetFileSizeEx"
+		$opt123 = "GetFileTime"
+		$opt124 = "GetFileType"
+		$opt125 = "GetFileVersionInfoA"
+		$opt126 = "GetFileVersionInfoSizeA"
+		$opt127 = "GetForegroundWindow"
+		$opt128 = "GetFullPathNameA"
+		$opt129 = "GetKeyNameTextA"
+		$opt130 = "GetKeyState"
+		$opt131 = "GetKeyboardLayout"
+		$opt132 = "GetKeyboardState"
+		$opt133 = "GetLastActivePopup"
+		$opt134 = "GetLastError"
+		$opt135 = "GetLocalTime"
+		$opt136 = "GetLocaleInfoA"
+		$opt137 = "GetLogicalDriveStringsA"
+		$opt138 = "GetMessageA"
+		$opt139 = "GetMessagePos"
+		$opt140 = "GetMessageTime"
+		$opt141 = "GetModuleFileNameA"
+		$opt142 = "GetModuleFileNameExA"
+		$opt143 = "GetModuleFileNameW"
+		$opt144 = "GetModuleHandleA"
+		$opt145 = "GetModuleHandleW"
+		$opt146 = "GetModuleInformation"
+		$opt147 = "GetMonitorInfoA"
+		$opt148 = "GetPrivateProfileSectionA"
+		$opt149 = "GetPrivateProfileSectionNamesA"
+		$opt150 = "GetPrivateProfileStringA"
+		$opt151 = "GetProcAddress"
+		$opt152 = "GetProcessAffinityMask"
+		$opt153 = "GetProcessHeap"
+		$opt154 = "GetProcessWindowStation"
+		$opt155 = "GetProductInfo"
+		$opt156 = "GetProfileIntA"
+		$opt157 = "GetShortPathNameA"
+		$opt158 = "GetStartupInfoA"
+		$opt159 = "GetStdHandle"
+		$opt160 = "GetStringTypeA"
+		$opt161 = "GetStringTypeW"
+		$opt162 = "GetSystemDefaultLangID"
+		$opt163 = "GetSystemDirectoryA"
+		$opt164 = "GetSystemDirectoryW"
+		$opt165 = "GetSystemInfo"
+		$opt166 = "GetSystemMetrics"
+		$opt167 = "GetSystemTimeAsFileTime"
+		$opt168 = "GetTempFileNameA"
+		$opt169 = "GetTempPathA"
+		$opt170 = "GetThreadLocale"
+		$opt171 = "GetThreadPriority"
+		$opt172 = "GetTickCount"
+		$opt173 = "GetTimeFormatA"
+		$opt174 = "GetTimeZoneInformation"
+		$opt175 = "GetUserObjectInformationA"
+		$opt176 = "GetVersionExA"
+		$opt177 = "GetVolumeInformationA"
+		$opt178 = "GetWindowLongA"
+		$opt179 = "GetWindowPlacement"
+		$opt180 = "GetWindowTextA"
+
+	condition:
+		//require 90% of IOC patterns and require 50% of optional strings
+		uint16(0) == 0x5A4D and filesize > 5788570 and filesize < 7074918 and 16 of ($req*) and 90 of ($opt*)
+}
