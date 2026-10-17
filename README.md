@@ -1,2 +1,2 @@
 # MecaU
-MecaU is a C library that will allow you to manage memory automatically, without a garbage collector.
+MecaU is a Python library that makes it easy to create, customize, and export voxel-based 3D models in GLB and OBJ formats.

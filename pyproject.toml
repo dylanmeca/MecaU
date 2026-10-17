@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "MecaU"
+version = "0.1.0"
+description = "MecaU is a Python library that makes it easy to create, customize, and export voxel-based 3D models in GLB and OBJ formats."
+authors = [
+   { name = "Dylan Meca", email = "dylanmeca70@gmail.com" }
+]
+maintainers = [
+   { name = "Dylan Meca", email = "dylanmeca70@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "trimesh>=4.0"]
+keywords = ["voxel", "3d", "procedural", "glb", "obj"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Multimedia :: Graphics :: 3D Modeling",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "build>=1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
