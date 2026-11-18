@@ -24,14 +24,11 @@ def test_export(tmp_path):
     m = VoxelModel()
     m.voxel(0, 0, 0, "#0088FF")
     glb = m.export(tmp_path / "prueba.glb")
-    obj = m.export(tmp_path / "prueba.obj")
     assert glb.read_bytes()[:4] == b"glTF"
-    assert obj.with_suffix(".mtl").exists()
     assert len(trimesh.load(str(glb), force="scene").geometry) == 1
-    assert len(trimesh.load(str(obj), force="scene").geometry) == 1
 
 
-def test_bad_inputs():
+def test_bad_inputs(tmp_path):
     m = VoxelModel()
     with pytest.raises(ValueError):
         m.voxel(0.5, 1, 2)
@@ -39,6 +36,9 @@ def test_bad_inputs():
         m.box(0, 0, 0, -1, 2, 2)
     with pytest.raises(ValueError):
         m.voxel(0, 0, 0, "rojo")
-    with pytest.raises(ValueError):
+    m.voxel(0, 0, 0)
+    with pytest.raises(ValueError, match=r"Solo se puede exportar a \.glb"):
+        m.export(tmp_path / "prueba.obj")
+    with pytest.raises(ValueError, match=r"Solo se puede exportar a \.glb"):
         m.export("test.ply")
 
