@@ -28,6 +28,5 @@ casa.box(0, 6, 0, 10, 1, 8, "#8B3434")
 # 5. Guarda el modelo en la carpeta donde está este ejemplo
 out = Path(__file__).parent
 casa.export(out / "casa.glb")
-casa.export(out / "casa.obj")
 print("¡Casa creada! Voxels:", len(casa.voxels))
 
