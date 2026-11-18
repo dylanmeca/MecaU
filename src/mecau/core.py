@@ -35,7 +35,7 @@ class VoxelModel:
         return self
 
     def export(self, filename):
-        """Convierte los cubos guardados en un archivo .glb o .obj."""
+        """Convierte los cubos guardados en un archivo .glb."""
         from .export import save_model
         return save_model(self, Path(filename))
 
